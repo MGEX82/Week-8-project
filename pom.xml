@@ -12,7 +12,7 @@
 	<artifactId>F1-database</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>F1-database</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Week 8 project</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -51,6 +51,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+    </dependency>
 	</dependencies>
 
 	<build>
