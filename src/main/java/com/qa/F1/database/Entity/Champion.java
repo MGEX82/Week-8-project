@@ -27,10 +27,10 @@ public class Champion {
     private long id;
 
     @Column(unique = true, nullable = false)
-    private int year;
+    private int season;
 
     @Column (nullable = false)
-    private String name;
+    private String winner;
 
     @Column
     private String nation;
@@ -44,14 +44,18 @@ public class Champion {
     
    
 
-    public Champion(int year, String name, String nation, String team ) {
+    public Champion(int season, String winner, String nation, String team ) {
         super();
-        this.year = year;
-        this.name = name;
+        this.season = season;
+        this.winner = winner;
         this.nation = nation;
         this.team = team;
         
         
     }
+
+
+
+	
 
 }

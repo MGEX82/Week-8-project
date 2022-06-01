@@ -10,8 +10,8 @@ import com.qa.F1.database.Entity.Champion;
 
 @Repository
 public interface F1Repo extends JpaRepository<Champion, Long> {
-	List<Champion> findByYear(int year);
-	List<Champion> findByName(String name);
+	List<Champion> findBySeason(int season);
+	List<Champion> findByWinner(String winner);
 	List<Champion> findByNation(String nation);
 	List<Champion> findByTeam(String team);
 

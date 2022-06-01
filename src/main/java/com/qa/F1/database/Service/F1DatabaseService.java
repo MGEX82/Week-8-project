@@ -36,11 +36,11 @@ public class F1DatabaseService {
 		public Champion getById(long id) {
 			return repo.findById(id).get();
 		}
-		public List<Champion> getByYear(int year) {
-			return repo.findByYear(year);
+		public List<Champion> getBySeason(int season) {
+			return repo.findBySeason(season);
 		}
-		public List<Champion> getByName(String name) {
-			return repo.findByName(name);
+		public List<Champion> getByWinner(String winner) {
+			return repo.findByWinner(winner);
 		}
 		public List<Champion> getByNation(String nation) {
 			return repo.findByNation(nation);
@@ -55,8 +55,8 @@ public class F1DatabaseService {
 			Champion existing = repo.findById(id).get();
 			
 			// Then, updated the existing entry using the new object
-			existing.setYear(champion.getYear());
-			existing.setName(champion.getName());
+			existing.setSeason(champion.getSeason());
+			existing.setWinner(champion.getWinner());
 			existing.setNation(champion.getNation());
 			existing.setTeam(champion.getTeam());
 			

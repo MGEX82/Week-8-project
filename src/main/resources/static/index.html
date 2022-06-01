@@ -5,29 +5,66 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
-            Inputs
+            F1 Database
         </title>
 
         <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+        <link rel="stylesheet" type="text/css" href="./CSS/F1.css">
     </head>
     <body>
-        
-        <button id="submitBtn">Submit</button>
-        
+        <div><h1>Welcome to the Matt G F1 database</h1></div>
         <form>
-            <input id="inputYear" type="number"/>
-            <input id="inputName" type="String"/>
-            <input id="inputNation" type="String"/>
-            <input id="inputTeam" type="String"/>
+            <div>
+                <div class="input-group date" data-provide="datepicker" data-date-format="yyyy">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                <label>Championship year</label>
+                <input id = "inputSeason" type="date" />
+                </div>
+              </div>
+              <div>
+                <label>Driver name</label>
+                <input id="inputWinner" type="text" />
+              </div>
+              <div>
+                <label>Nation</label>
+                <input id ="inputNation" type="text" />
+              </div>
+              <div>
+                <label>Team</label>
+                <input id ="inputTeam" type="text" />
+              </div>
+
         </form>
+
+        
+        
+        <button id="postBtn">Post</button>
+        <button id="getAllBtn">Get All</button>
+        <button id="getByIdBtn">Get By ID</button>
+        <button id="getBySeasonBtn">Get By Year</button>
+        <button id="getByWinnerBtn">Get By Champion</button>
+        <button id="getByNationBtn">Get By Nation</button>
+        <button id="getByTeamBtn">Get By Team</button>
+        <button id="putBtn">Update</button>
+        <button id="deleteBtn">Delete</button>
+
+        
+        
+        
+        
+        
         
         <div id="mainDiv"></div>
 
 
         <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+        
 
-        <script src="./F1.js"></script>
+        <script src="./Javascript/F1.js"></script>
     </body>
 </html>

@@ -37,13 +37,13 @@ private F1DatabaseService service;
 	public ResponseEntity<Champion> getById(@PathVariable long id) {
 		return new ResponseEntity<Champion>(service.getById(id), HttpStatus.OK);
 	}
-	@GetMapping("/getByYear/{year}")
-	public ResponseEntity<List<Champion>> getByYear(@PathVariable int year) {
-		return new ResponseEntity<List<Champion>>(service.getByYear(year), HttpStatus.OK);
+	@GetMapping("/getBySeason/{season}")
+	public ResponseEntity<List<Champion>> getByYear(@PathVariable int season) {
+		return new ResponseEntity<List<Champion>>(service.getBySeason(season), HttpStatus.OK);
 	}
-	@GetMapping("/getByName/{name}")
-	public ResponseEntity<List<Champion>> getByName(@PathVariable String name) {
-		return new ResponseEntity<List<Champion>>(service.getByName(name), HttpStatus.OK);
+	@GetMapping("/getByWinner/{winner}")
+	public ResponseEntity<List<Champion>> getByWinner(@PathVariable String winner) {
+		return new ResponseEntity<List<Champion>>(service.getByWinner(winner), HttpStatus.OK);
 	}
 	@GetMapping("/getByNation/{nation}")
 	public ResponseEntity<List<Champion>> getByNation(@PathVariable String nation) {
