@@ -78,14 +78,14 @@ public class F1DatabaseControllerUnitTest {
 		List<Champion> entries = new ArrayList<>();
 		Champion entry = new Champion (1950, "Nino Farina", "Italy", "Alfa Romeo");
 		entries.add(entry);
-		String entryAsJSONArray = mapper.writeValueAsString(entry);
+		String entriesAsJSON = mapper.writeValueAsString(entries);
 		
 		Mockito.when(this.service.getBySeason(1950)).thenReturn(entries);
 		
 		mvc.perform(get("/getBySeason/1950")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
-			.andExpect(content().json(entryAsJSONArray));
+			.andExpect(content().json(entriesAsJSON));
 	}
 	
 	@Test
@@ -93,14 +93,14 @@ public class F1DatabaseControllerUnitTest {
 		List<Champion> entries = new ArrayList<>();
 		Champion entry = new Champion (1950, "Nino Farina", "Italy", "Alfa Romeo");
 		entries.add(entry);
-		String entriesAsJSONArray = mapper.writeValueAsString(entry);
+		String entriesAsJSON = mapper.writeValueAsString(entries);
 		
 		Mockito.when(this.service.getByWinner("Nino Farina")).thenReturn(entries);
 		
-		mvc.perform(get("/getByWinner/Nino_Farina")
+		mvc.perform(get("/getByWinner/Nino Farina")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
-			.andExpect(content().json(entriesAsJSONArray));
+			.andExpect(content().json(entriesAsJSON));
 	}
 
 	@Test
@@ -108,14 +108,14 @@ public class F1DatabaseControllerUnitTest {
 		List<Champion> entries = new ArrayList<>();
 		Champion entry = new Champion (1950, "Nino Farina", "Italy", "Alfa Romeo");
 		entries.add(entry);
-		String entriesAsJSONArray = mapper.writeValueAsString(entry);
+		String entriesAsJSON = mapper.writeValueAsString(entries);
 		
 		Mockito.when(this.service.getByNation("Italy")).thenReturn(entries);
 		
 		mvc.perform(get("/getByNation/Italy")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
-			.andExpect(content().json(entriesAsJSONArray));
+			.andExpect(content().json(entriesAsJSON));
 	}
 	
 	@Test
@@ -123,14 +123,14 @@ public class F1DatabaseControllerUnitTest {
 		List<Champion> entries = new ArrayList<>();
 		Champion entry = new Champion (1950, "Nino Farina", "Italy", "Alfa Romeo");
 		entries.add(entry);
-		String entriesAsJSONArray = mapper.writeValueAsString(entry);
+		String entriesAsJSON = mapper.writeValueAsString(entries);
 		
-		Mockito.when(this.service.getByNation("Alfa Romeo")).thenReturn(entries);
+		Mockito.when(this.service.getByTeam("Alfa Romeo")).thenReturn(entries);
 		
-		mvc.perform(get("/getByTeam/Alfa_Romeo")
+		mvc.perform(get("/getByTeam/Alfa Romeo")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
-			.andExpect(content().json(entriesAsJSONArray));
+			.andExpect(content().json(entriesAsJSON));
 	}
 	@Test
 	public void updateTest() throws Exception {
@@ -157,9 +157,9 @@ public class F1DatabaseControllerUnitTest {
 	
 	@Test
 	public void deleteFailTest() throws Exception {
-		Mockito.when(service.delete(1L)).thenReturn(false);
+		Mockito.when(service.delete(3L)).thenReturn(false);
 	
-		mvc.perform(delete("/delete/1")
+		mvc.perform(delete("/champion/delete/3")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isNotFound());
 	}

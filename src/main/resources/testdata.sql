@@ -1,0 +1,1 @@
+INSERT INTO champion (season, winner, nation, team) VALUES (1950, 'Nino Farina', 'Italy', 'Alfa Romeo');

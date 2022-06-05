@@ -9,6 +9,7 @@ import com.qa.F1.database.Repo.*;
 
 
 import com.qa.F1.database.Entity.*;
+import com.qa.F1.database.Exceptions.EntryNotFound;
 
 
 @Service
@@ -34,7 +35,7 @@ public class F1DatabaseService {
 		
 		// Read By ID
 		public Champion getById(long id) {
-			return repo.findById(id).get();
+			return repo.findById(id).orElseThrow(EntryNotFound::new);
 		}
 		public List<Champion> getBySeason(int season) {
 			return repo.findBySeason(season);
@@ -52,7 +53,7 @@ public class F1DatabaseService {
 		// Update
 		public Champion update(long id, Champion champion) {
 			// First, get the existing entry
-			Champion existing = repo.findById(id).get();
+			Champion existing = repo.findById(id).orElseThrow(EntryNotFound::new);
 			
 			// Then, updated the existing entry using the new object
 			existing.setSeason(champion.getSeason());

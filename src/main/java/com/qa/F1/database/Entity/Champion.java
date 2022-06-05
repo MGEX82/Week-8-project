@@ -1,5 +1,6 @@
 package com.qa.F1.database.Entity;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -21,7 +22,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Champion {
+public class Champion  {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

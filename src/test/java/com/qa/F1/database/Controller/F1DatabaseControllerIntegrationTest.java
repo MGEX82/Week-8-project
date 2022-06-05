@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -21,7 +21,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.F1.database.Entity.Champion;
 
@@ -38,7 +38,7 @@ public class F1DatabaseControllerIntegrationTest {
 
 	@Test
 	public void createTest() throws Exception {
-		Champion input = new Champion(1950, "Nino Farina", "Italy", "Alfa Romeo");
+		Champion input = new Champion(1951, "Juan Manuel Fangio", "Argentina", "Alfa Romeo");
 		String inputAsJSON = mapper.writeValueAsString(input);
 		
 		Champion output = new Champion(2L, 1951, "Juan Manuel Fangio", "Argentina", "Alfa Romeo");
@@ -78,50 +78,62 @@ public class F1DatabaseControllerIntegrationTest {
 	}
 	@Test
 	public void getBySeasonTest() throws Exception {
-		Champion entry = new Champion (1950, "Nino Farina", "Italy", "Alfa Romeo");
-		String entryAsJSON = this.mapper.writeValueAsString(entry);
+		Champion champion = new Champion(1L, 1950, "Nino Farina", "Italy", "Alfa Romeo");
+		List<Champion> output = new ArrayList<>();
+		output.add(champion);
+		
+		String outputAsJSON = mapper.writeValueAsString(output);
 		
 		mvc.perform(get("/getBySeason/1950")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
-			.andExpect(content().json(entryAsJSON));
+			.andExpect(content().json(outputAsJSON));
 	}
 	@Test
 	public void getByWinnerTest() throws Exception {
-		Champion entry = new Champion (1950, "Nino Farina", "Italy", "Alfa Romeo");
-		String entryAsJSON = this.mapper.writeValueAsString(entry);
+		Champion champion = new Champion(1L, 1950, "Nino Farina", "Italy", "Alfa Romeo");
+		List<Champion> output = new ArrayList<>();
+		output.add(champion);
 		
-		mvc.perform(get("/getByWinner/Nino_Farina")
+		String outputAsJSON = mapper.writeValueAsString(output);
+		
+		mvc.perform(get("/getByWinner/Nino Farina")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
-			.andExpect(content().json(entryAsJSON));
+			.andExpect(content().json(outputAsJSON));
 	}
 	@Test
 	public void getByNationTest() throws Exception {
-		Champion entry = new Champion (1950, "Nino Farina", "Italy", "Alfa Romeo");
-		String entryAsJSON = this.mapper.writeValueAsString(entry);
+		Champion champion = new Champion(1L, 1950, "Nino Farina", "Italy", "Alfa Romeo");
+		List<Champion> output = new ArrayList<>();
+		output.add(champion);
+		
+		String outputAsJSON = mapper.writeValueAsString(output);
 		
 		mvc.perform(get("/getByNation/Italy")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
-			.andExpect(content().json(entryAsJSON));
+			.andExpect(content().json(outputAsJSON));
 	}
 	@Test
 	public void getByTeamTest() throws Exception {
-		Champion entry = new Champion (1950, "Nino Farina", "Italy", "Alfa Romeo");
-		String entryAsJSON = this.mapper.writeValueAsString(entry);
+		Champion champion = new Champion(1L, 1950, "Nino Farina", "Italy", "Alfa Romeo");
+		List<Champion> output = new ArrayList<>();
+		output.add(champion);
 		
-		mvc.perform(get("/getByTeam/Alfa_Romeo")
+		String outputAsJSON = mapper.writeValueAsString(output);
+		
+		mvc.perform(get("/getByTeam/Alfa Romeo")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
-			.andExpect(content().json(entryAsJSON));
+			.andExpect(content().json(outputAsJSON));
 	}
 	
 	
 	
 	@Test
 	public void updateTest() throws Exception {
-		Champion entry = new Champion(1950, "Nino Farina", "Italia", "Alfa Romeo");
+		Champion entry = new Champion(1950, "Nino Farina", "Italy", "Alfa Romeo");
 		Champion result = new Champion(1L, 1950, "Nino Farina", "Italy", "Alfa Romeo");
 		
 		String entryAsJSON = this.mapper.writeValueAsString(entry);
