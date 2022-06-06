@@ -20,7 +20,7 @@ let deleteBtn = document.querySelector("#delete");
 
 // GET - READ
 let getAllRequest = () => {
-    axios.get("http://localhost:8080/champion/getAll")
+    axios.get("http://localhost:8080/getAll")
         .then((response) => {
             // console.log(response.data);
             displayResult(response.data);
@@ -30,7 +30,7 @@ let getAllRequest = () => {
         });
 }
 let getByIdRequest = () => {
-    axios.get("http://localhost:8080/champion/getById")
+    axios.get("http://localhost:8080/getById")
         .then((response) => {
             // console.log(response.data);
             displayResult(response.data);
@@ -40,7 +40,7 @@ let getByIdRequest = () => {
         });
 }
 let getBySeasonRequest = () => {
-    axios.get("http://localhost:8080/champion/getBySeason")
+    axios.get("http://localhost:8080/getBySeason")
         .then((response) => {
             // console.log(response.data);
             displayResult(response.data);
@@ -50,7 +50,7 @@ let getBySeasonRequest = () => {
         });
 }
 let getByWinnerRequest = () => {
-    axios.get("http://localhost:8080/champion/getByWinner")
+    axios.get("http://localhost:8080/getByWinner")
         .then((response) => {
             // console.log(response.data);
             displayResult(response.data);
@@ -60,7 +60,7 @@ let getByWinnerRequest = () => {
         });
 }
 let getByNationRequest = () => {
-    axios.get("http://localhost:8080/champion/getByNation")
+    axios.get("http://localhost:8080/getByNation")
         .then((response) => {
             // console.log(response.data);
             displayResult(response.data);
@@ -70,7 +70,7 @@ let getByNationRequest = () => {
         });
 }
 let getByTeamRequest = () => {
-    axios.get("http://localhost:8080/champion/getByTeam")
+    axios.get("http://localhost:8080/getByTeam")
         .then((response) => {
             // console.log(response.data);
             displayResult(response.data);
@@ -91,7 +91,7 @@ let postRequest = () => {
         "team":"Alfa Romeo"
     }
 
-    axios.post("http://localhost:8080/champion/create", obj)
+    axios.post("http://localhost:8080/create", obj)
         .then((response) => {
             console.log(response);
             // displayResult(response.data.data);
@@ -102,7 +102,7 @@ let postRequest = () => {
 }
 // PUT/PATCH - UPDATE
 let putRequest = () => {
-axios.put("http://localhost:8080/champion/update", obj)
+axios.put("http://localhost:8080/update", obj)
         .then((response) => {
             console.log(response);
             // displayResult(response.data.data);
@@ -114,7 +114,7 @@ axios.put("http://localhost:8080/champion/update", obj)
     }
 // DELETE - DELETE
 let deleteRequest = () => {
-    axios.delete("http://localhost:8080/champion/delete", obj)
+    axios.delete("http://localhost:8080/delete", obj)
             .then((response) => {
                 console.log(response);
                 // displayResult(response.data.data);
