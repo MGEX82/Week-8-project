@@ -1,28 +1,37 @@
 'use strict';
-
-
+//Inputs
+let inputId = document.querySelector("#inputId");
+let inputSeason = document.querySelector("#inputSeason");
+let inputWinner = document.querySelector("#inputWinner");
+let inputNation = document.querySelector("#inputNation");
+let inputTeam = document.querySelector("#inputTeam");
 
 // Selectors
 
 let resultsDiv = document.querySelector("#results");
+let IdentryDiv = document.querySelector("#Identry");
+let SeasonentryDiv = document.querySelector("#seasonentry");
+let ChampionentryDiv = document.querySelector("#championentry");
+let NationentryDiv = document.querySelector("#nationentry");
+let teamentryDiv = document.querySelector("#teamentry");
 let getAllBtn = document.querySelector("#getAll");
-let getByIdBtn = document.querySelector("#getByID");
+let getByIdBtn = document.querySelector("#getById");
 let getBySeasonBtn = document.querySelector("#getBySeason");
-let getByWinner = document.querySelector("#getByWinner");
+let getByWinnerBtn = document.querySelector("#getByWinner");
 let getByYearBtn = document.querySelector("#getByYear");
 let getByNationBtn = document.querySelector("#getByNation");
 let getByTeamBtn = document.querySelector("#getByTeam");
 let postBtn = document.querySelector("#post");
-let putBtn = document.querySelector("#update");
+let putBtn = document.querySelector("#put");
 let deleteBtn = document.querySelector("#delete");
 
 
 
 // GET - READ
 let getAllRequest = () => {
-    axios.get("http://localhost:8080/getAll")
+    axios.get("http://localhost:8080/champion/getAll")
         .then((response) => {
-            // console.log(response.data);
+            console.log(response.data);
             displayResult(response.data);
         })
         .catch((err) => {
@@ -30,9 +39,9 @@ let getAllRequest = () => {
         });
 }
 let getByIdRequest = () => {
-    axios.get("http://localhost:8080/getById")
+    axios.get("http://localhost:8080/champion/getById/$`{inputId.value}`")
         .then((response) => {
-            // console.log(response.data);
+            console.log(response.data);
             displayResult(response.data);
         })
         .catch((err) => {
@@ -40,9 +49,9 @@ let getByIdRequest = () => {
         });
 }
 let getBySeasonRequest = () => {
-    axios.get("http://localhost:8080/getBySeason")
+    axios.get("http://localhost:8080/champion/getBySeason/$`{inputSeason.value}`")
         .then((response) => {
-            // console.log(response.data);
+             console.log(response.data);
             displayResult(response.data);
         })
         .catch((err) => {
@@ -50,9 +59,9 @@ let getBySeasonRequest = () => {
         });
 }
 let getByWinnerRequest = () => {
-    axios.get("http://localhost:8080/getByWinner")
+    axios.get("http://localhost:8080/champion/getByWinner/$`{inputWinner.value}`")
         .then((response) => {
-            // console.log(response.data);
+             console.log(response.data);
             displayResult(response.data);
         })
         .catch((err) => {
@@ -60,9 +69,9 @@ let getByWinnerRequest = () => {
         });
 }
 let getByNationRequest = () => {
-    axios.get("http://localhost:8080/getByNation")
+    axios.get("http://localhost:8080/champion/getByNation/$`{inputNation.value}`")
         .then((response) => {
-            // console.log(response.data);
+            console.log(response.data);
             displayResult(response.data);
         })
         .catch((err) => {
@@ -70,9 +79,9 @@ let getByNationRequest = () => {
         });
 }
 let getByTeamRequest = () => {
-    axios.get("http://localhost:8080/getByTeam")
+    axios.get("http://localhost:8080/champion/getByTeam/$`{inputTeam.value}`")
         .then((response) => {
-            // console.log(response.data);
+            console.log(response.data);
             displayResult(response.data);
         })
         .catch((err) => {
@@ -85,16 +94,16 @@ let getByTeamRequest = () => {
 let postRequest = () => {
 
     let obj = {
-        "season":"1950",
-        "winner":"Nino Farina",
-        "nation":"Italy",
-        "team":"Alfa Romeo"
+        "season": inputSeason.value,
+        "winner": inputWinner.value,
+        "nation": inputNation.value,
+        "team": inputTeam.value
     }
 
-    axios.post("http://localhost:8080/create", obj)
+    axios.post("http://localhost:8080/champion/create", obj)
         .then((response) => {
             console.log(response);
-            // displayResult(response.data.data);
+            displayResult(response.data.data);
         })
         .catch((err) => {
             console.error(err);
@@ -102,10 +111,17 @@ let postRequest = () => {
 }
 // PUT/PATCH - UPDATE
 let putRequest = () => {
-axios.put("http://localhost:8080/update", obj)
+
+    let obj = {
+        "season": inputSeason.value,
+        "winner": inputWinner.value,
+        "nation": inputNation.value,
+        "team": inputTeam.value
+    }
+axios.put("http://localhost:8080/champion/update/`${inputId.value}`", obj)
         .then((response) => {
             console.log(response);
-            // displayResult(response.data.data);
+            displayResult(response.data.data);
         })
         .catch((err) => {
             console.error(err);
@@ -114,10 +130,17 @@ axios.put("http://localhost:8080/update", obj)
     }
 // DELETE - DELETE
 let deleteRequest = () => {
-    axios.delete("http://localhost:8080/delete", obj)
+
+    let obj = {
+        "season": inputSeason.value,
+        "winner": inputWinner.value,
+        "nation": inputNation.value,
+        "team": inputTeam.value
+    }
+    axios.delete("http://localhost:8080/champion/delete/`${inputId.value}`", obj)
             .then((response) => {
                 console.log(response);
-                // displayResult(response.data.data);
+                displayResult(response.data.data);
             })
             .catch((err) => {
                 console.error(err);
@@ -143,11 +166,11 @@ let displayResult = (data) => {
 
 // Event Listeners
 getAllBtn.addEventListener("click", getAllRequest);
-getByIDBtn.addEventListener("click", getByIdRequest);
+getByIdBtn.addEventListener("click", getByIdRequest);
 getBySeasonBtn.addEventListener("click", getBySeasonRequest);
 getByWinnerBtn.addEventListener("click", getByWinnerRequest);
 getByNationBtn.addEventListener("click", getByNationRequest);
 getByTeamBtn.addEventListener("click", getByTeamRequest);
 postBtn.addEventListener("click", postRequest);
-updateBtn.addEventListener("click", putRequest);
+putBtn.addEventListener("click", putRequest);
 deleteBtn.addEventListener("click", deleteRequest);

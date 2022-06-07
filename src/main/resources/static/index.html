@@ -15,23 +15,23 @@
     <body>
         <div><h1>Welcome to the Matt G F1 database</h1></div>
         <form>
-          <div>
+          <div id ="IdentryDiv">
             <label>ID</label>
-            <input id = "inputID" type="number" />
+            <input id = "inputId" type="number" />
             </div>
-            <div>
+            <div id ="SeasonentryDiv">
                 <label>Championship year</label>
                 <input id = "inputSeason" type="number" />
                 </div>
-              <div>
+              <div id = "ChampionentryDiv">
                 <label>Driver name</label>
                 <input id="inputWinner" type="text" />
               </div>
-              <div>
+              <div id = "NationentryDiv">
                 <label>Nation</label>
                 <input id ="inputNation" type="text" />
               </div>
-              <div>
+              <div id = "teamentrydiv">
                 <label>Team</label>
                 <input id ="inputTeam" type="text" />
               </div>
@@ -40,15 +40,15 @@
 
         
         
-        <button id="postBtn">Post</button>
-        <button id="getAllBtn">Get All</button>
-        <button id="getByIdBtn">Get By ID</button>
-        <button id="getBySeasonBtn">Get By Year</button>
-        <button id="getByWinnerBtn">Get By Champion</button>
-        <button id="getByNationBtn">Get By Nation</button>
-        <button id="getByTeamBtn">Get By Team</button>
-        <button id="putBtn">Update</button>
-        <button id="deleteBtn">Delete</button>
+        <button id="post">Post</button>
+        <button id="getAll">Get All</button>
+        <button id="getById">Get By ID</button>
+        <button id="getBySeason">Get By Year</button>
+        <button id="getByWinner">Get By Champion</button>
+        <button id="getByNation">Get By Nation</button>
+        <button id="getByTeam">Get By Team</button>
+        <button id="put">Update</button>
+        <button id="delete">Delete</button>
 
         
         
@@ -57,12 +57,13 @@
         
         
         <div id="mainDiv"></div>
+        <div id="results"></div>
 
 
         <!-- Bootstrap JS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-        
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
         <script src="./Javascript/F1.js"></script>
     </body>
