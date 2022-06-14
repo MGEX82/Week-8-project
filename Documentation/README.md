@@ -35,7 +35,7 @@ You will need to run the fatjar to get the API up and running then access the in
 ## Versioning
 We use SemVer for versioning. 
 
-Authors
+### Authors
 Matthew Grimsey
 
 License
