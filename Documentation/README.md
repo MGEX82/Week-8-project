@@ -37,7 +37,9 @@ We use SemVer for versioning.
 
 Authors
 Matthew Grimsey
+
 License
 This project is licensed under the MIT license - see the LICENSE.md file for details
 For help in Choosing a license Acknowledgments
+
 Thanks to Annoush Lowton and other members of my cohort for the help they have given me.
