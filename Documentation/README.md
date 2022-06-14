@@ -23,7 +23,7 @@ VS Code installation instructions: https://code.visualstudio.com/
 The tests in this package can be split into the following categories
 
 ### Unit Tests
-There are three Unit tests in this class, F1Database Service Test, Controller User Test and F1 Database Application test. 
+There are three Unit tests in this class, F1Database Service Test, Controller Unit Test and F1 Database Application test. 
 ### Integration Tests
 Integration testing is more generic rather than focussed on a specific class. They test how well classes interact with each other. The only Integration test is the Controller Integration test.
 
