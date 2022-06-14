@@ -4,12 +4,19 @@ These instructions will get you a copy of the project up and running on your loc
 For a copy of the project management board go here: https://project-22.atlassian.net/jira/software/projects/W8P/boards/2
 ## Prerequisites
 The development of this project was done using MySQL Workbench 8.0 and Eclipse IDE for Java Developers 22-03. You will also require Maven to help install the program.
+
 To download MySQL Workbench 8.0 please go here: https://dev.mysql.com/downloads/workbench/
+
 To download Eclipse go here: https://www.eclipse.org/downloads/packages/release/neon/2/eclipse-ide-java-developers
+
 To download Maven go here: https://maven.apache.org/download.cgi 
+
 Installing Maven installation instructions: https://maven.apache.org/install.html
+
 MySQL Workbench installation instructions: https://www.simplilearn.com/tutorials/mysql-tutorial/mysql-workbench-installation
+
 Maven installation instructions: https://maven.apache.org/install.html 
+
 VS Code installation instructions: https://code.visualstudio.com/ 
 
 ## Running the tests
@@ -24,10 +31,12 @@ Integration testing is more generic rather than focussed on a specific class. Th
 
 ## Deployment
 You will need to run the fatjar to get the API up and running then access the index.html file.  
-##Maven - Dependency Management
+## Maven - Dependency Management
 ## Versioning
-We use SemVer for versioning. Authors
-Chris Perrins - Initial work - christophperrins
+We use SemVer for versioning. 
+
+Authors
+Matthew Grimsey
 License
 This project is licensed under the MIT license - see the LICENSE.md file for details
 For help in Choosing a license Acknowledgments
