@@ -44,7 +44,7 @@ public class F1DatabaseControllerIntegrationTest {
 		Champion output = new Champion(2L, 1951, "Juan Manuel Fangio", "Argentina", "Alfa Romeo");
 		String outputAsJSON = mapper.writeValueAsString(output);
 		
-		mvc.perform(post("/create")
+		mvc.perform(post("/champion/create")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(inputAsJSON))
 				.andExpect(status().isCreated())
@@ -60,7 +60,7 @@ public class F1DatabaseControllerIntegrationTest {
 		
 		String outputAsJSON = mapper.writeValueAsString(output);
 		
-		mvc.perform(get("/getAll")
+		mvc.perform(get("/champion/getAll")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().json(outputAsJSON));
@@ -71,7 +71,7 @@ public class F1DatabaseControllerIntegrationTest {
 		Champion entry = new Champion(1L, 1950, "Nino Farina", "Italy", "Alfa Romeo");
 		String entryAsJSON = this.mapper.writeValueAsString(entry);
 		
-		mvc.perform(get("/getById/1")
+		mvc.perform(get("/champion/getById/1")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().json(entryAsJSON));
@@ -84,7 +84,7 @@ public class F1DatabaseControllerIntegrationTest {
 		
 		String outputAsJSON = mapper.writeValueAsString(output);
 		
-		mvc.perform(get("/getBySeason/1950")
+		mvc.perform(get("/champion/getBySeason/1950")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().json(outputAsJSON));
@@ -97,7 +97,7 @@ public class F1DatabaseControllerIntegrationTest {
 		
 		String outputAsJSON = mapper.writeValueAsString(output);
 		
-		mvc.perform(get("/getByWinner/Nino Farina")
+		mvc.perform(get("/champion/getByWinner/Nino Farina")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().json(outputAsJSON));
@@ -110,7 +110,7 @@ public class F1DatabaseControllerIntegrationTest {
 		
 		String outputAsJSON = mapper.writeValueAsString(output);
 		
-		mvc.perform(get("/getByNation/Italy")
+		mvc.perform(get("/champion/getByNation/Italy")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().json(outputAsJSON));
@@ -123,7 +123,7 @@ public class F1DatabaseControllerIntegrationTest {
 		
 		String outputAsJSON = mapper.writeValueAsString(output);
 		
-		mvc.perform(get("/getByTeam/Alfa Romeo")
+		mvc.perform(get("/champion/getByTeam/Alfa Romeo")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().json(outputAsJSON));
@@ -139,7 +139,7 @@ public class F1DatabaseControllerIntegrationTest {
 		String entryAsJSON = this.mapper.writeValueAsString(entry);
 		String resultAsJSON = this.mapper.writeValueAsString(result);
 		
-		mvc.perform(put("/update/1")
+		mvc.perform(put("/champion/update/1")
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(entryAsJSON))
 			.andExpect(status().isAccepted())
@@ -148,7 +148,7 @@ public class F1DatabaseControllerIntegrationTest {
 	
 	@Test
 	public void deleteTest() throws Exception {
-		mvc.perform(delete("/delete/1")
+		mvc.perform(delete("/champion/delete/1")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isNoContent());
 	}

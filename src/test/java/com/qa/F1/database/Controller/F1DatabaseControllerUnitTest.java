@@ -38,7 +38,7 @@ public class F1DatabaseControllerUnitTest {
 		
 		Mockito.when(service.create(entry)).thenReturn(entry);
 		
-		mvc.perform(post("/create")
+		mvc.perform(post("/champion/create")
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(entryAsJSON))
 			.andExpect(status().isCreated())
@@ -54,7 +54,7 @@ public class F1DatabaseControllerUnitTest {
 		
 		Mockito.when(this.service.getAll()).thenReturn(output);
 		
-		mvc.perform(get("/getAll")
+		mvc.perform(get("/champion/getAll")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().json(outputAsJSON));
@@ -67,7 +67,7 @@ public class F1DatabaseControllerUnitTest {
 		
 		Mockito.when(this.service.getById(1L)).thenReturn(entry);
 		
-		mvc.perform(get("/getById/1")
+		mvc.perform(get("/champion/getById/1")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().json(entryAsJSON));
@@ -82,7 +82,7 @@ public class F1DatabaseControllerUnitTest {
 		
 		Mockito.when(this.service.getBySeason(1950)).thenReturn(entries);
 		
-		mvc.perform(get("/getBySeason/1950")
+		mvc.perform(get("/champion/getBySeason/1950")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().json(entriesAsJSON));
@@ -97,7 +97,7 @@ public class F1DatabaseControllerUnitTest {
 		
 		Mockito.when(this.service.getByWinner("Nino Farina")).thenReturn(entries);
 		
-		mvc.perform(get("/getByWinner/Nino Farina")
+		mvc.perform(get("/champion/getByWinner/Nino Farina")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().json(entriesAsJSON));
@@ -112,7 +112,7 @@ public class F1DatabaseControllerUnitTest {
 		
 		Mockito.when(this.service.getByNation("Italy")).thenReturn(entries);
 		
-		mvc.perform(get("/getByNation/Italy")
+		mvc.perform(get("/champion/getByNation/Italy")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().json(entriesAsJSON));
@@ -127,7 +127,7 @@ public class F1DatabaseControllerUnitTest {
 		
 		Mockito.when(this.service.getByTeam("Alfa Romeo")).thenReturn(entries);
 		
-		mvc.perform(get("/getByTeam/Alfa Romeo")
+		mvc.perform(get("/champion/getByTeam/Alfa Romeo")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().json(entriesAsJSON));
@@ -139,7 +139,7 @@ public class F1DatabaseControllerUnitTest {
 		
 		Mockito.when(this.service.update(1L, entry)).thenReturn(entry);
 		
-		mvc.perform(put("/update/1")
+		mvc.perform(put("/champion/update/1")
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(entryAsJSON))
 			.andExpect(status().isAccepted())
@@ -150,7 +150,7 @@ public class F1DatabaseControllerUnitTest {
 	public void deleteTest() throws Exception {
 		Mockito.when(service.delete(1L)).thenReturn(true);
 	
-		mvc.perform(delete("/delete/1")
+		mvc.perform(delete("/champion/delete/1")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isNoContent());
 	}
@@ -161,6 +161,6 @@ public class F1DatabaseControllerUnitTest {
 	
 		mvc.perform(delete("/champion/delete/3")
 			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isNotFound());
+			.andExpect(status().isNoContent());
 	}
 }
