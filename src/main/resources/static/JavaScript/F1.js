@@ -39,7 +39,7 @@ let getAllRequest = () => {
         });
 }
 let getByIdRequest = () => {
-    axios.get("http://localhost:8080/champion/getById/$`{inputId.value}`")
+    axios.get(`http://localhost:8080/champion/getById/${inputId.value}`)
         .then((response) => {
             console.log(response.data);
             displayResult(response.data);
@@ -49,7 +49,7 @@ let getByIdRequest = () => {
         });
 }
 let getBySeasonRequest = () => {
-    axios.get("http://localhost:8080/champion/getBySeason/$`{inputSeason.value}`")
+    axios.get(`http://localhost:8080/champion/getBySeason/${inputSeason.value}`)
         .then((response) => {
              console.log(response.data);
             displayResult(response.data);
@@ -59,7 +59,7 @@ let getBySeasonRequest = () => {
         });
 }
 let getByWinnerRequest = () => {
-    axios.get("http://localhost:8080/champion/getByWinner/$`{inputWinner.value}`")
+    axios.get(`http://localhost:8080/champion/getByWinner/${inputWinner.value}`)
         .then((response) => {
              console.log(response.data);
             displayResult(response.data);
@@ -69,7 +69,7 @@ let getByWinnerRequest = () => {
         });
 }
 let getByNationRequest = () => {
-    axios.get("http://localhost:8080/champion/getByNation/$`{inputNation.value}`")
+    axios.get(`http://localhost:8080/champion/getByNation/${inputNation.value}`)
         .then((response) => {
             console.log(response.data);
             displayResult(response.data);
@@ -79,7 +79,7 @@ let getByNationRequest = () => {
         });
 }
 let getByTeamRequest = () => {
-    axios.get("http://localhost:8080/champion/getByTeam/$`{inputTeam.value}`")
+    axios.get(`http://localhost:8080/champion/getByTeam/${inputTeam.value}`)
         .then((response) => {
             console.log(response.data);
             displayResult(response.data);
@@ -103,7 +103,7 @@ let postRequest = () => {
     axios.post("http://localhost:8080/champion/create", obj)
         .then((response) => {
             console.log(response);
-            displayResult(response.data.data);
+            getAllRequest();
         })
         .catch((err) => {
             console.error(err);
@@ -118,10 +118,10 @@ let putRequest = () => {
         "nation": inputNation.value,
         "team": inputTeam.value
     }
-axios.put("http://localhost:8080/champion/update/`${inputId.value}`", obj)
+axios.put(`http://localhost:8080/champion/update/${inputId.value}`, obj)
         .then((response) => {
             console.log(response);
-            displayResult(response.data.data);
+            getAllRequest();
         })
         .catch((err) => {
             console.error(err);
@@ -131,16 +131,11 @@ axios.put("http://localhost:8080/champion/update/`${inputId.value}`", obj)
 // DELETE - DELETE
 let deleteRequest = () => {
 
-    let obj = {
-        "season": inputSeason.value,
-        "winner": inputWinner.value,
-        "nation": inputNation.value,
-        "team": inputTeam.value
-    }
-    axios.delete("http://localhost:8080/champion/delete/`${inputId.value}`", obj)
+    
+    axios.delete(`http://localhost:8080/champion/delete/${inputId.value}`)
             .then((response) => {
                 console.log(response);
-                displayResult(response.data.data);
+                getAllRequest();
             })
             .catch((err) => {
                 console.error(err);
@@ -149,18 +144,33 @@ let deleteRequest = () => {
         }
 
 let displayResult = (data) => {
-    for (let entry of data) {
+    resultsDiv.innerHTML = "";
+    if ( Array.isArray(data)) {
+
+        for (let entry of data) {
+            const entryDiv = document.createElement("div");
+            entryDiv.setAttribute("class", "entryDiv");
+            const text = document.createTextNode(`ID: ${entry.id} | Year: ${entry.season} | Name: ${entry.winner} | Nation: ${entry.nation}| Team: ${entry.team}`);
+
+            // const img = document.createElement("img");
+            // img.setAttribute("src", entry.avatar);
+            // img.setAttribute("class", "avatars");
+
+            entryDiv.appendChild(text);
+            resultsDiv.appendChild(entryDiv);
+            // resultsDiv.appendChild(img);
+        }
+    } else {
         const entryDiv = document.createElement("div");
-        entryDiv.setAttribute("class", "entryDiv");
-        const text = document.createTextNode(`ID: ${entry.id} | Year: ${entry.season} | Name: ${entry.winner} | Nation: ${entry.nation}| Team: ${entry.team}`);
+            entryDiv.setAttribute("class", "entryDiv");
+            const text = document.createTextNode(`ID: ${data.id} | Year: ${data.season} | Name: ${data.winner} | Nation: ${data.nation}| Team: ${data.team}`);
 
-        // const img = document.createElement("img");
-        // img.setAttribute("src", entry.avatar);
-        // img.setAttribute("class", "avatars");
+            // const img = document.createElement("img");
+            // img.setAttribute("src", entry.avatar);
+            // img.setAttribute("class", "avatars");
 
-        entryDiv.appendChild(text);
-        resultsDiv.appendChild(entryDiv);
-        // resultsDiv.appendChild(img);
+            entryDiv.appendChild(text);
+            resultsDiv.appendChild(entryDiv);
     }
 }
 
